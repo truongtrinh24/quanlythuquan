@@ -8,7 +8,7 @@ namespace qlythuquanAdmin.database
     {
         private static string connectionString = "server=localhost;database=qlythuquan;uid=root;pwd=;";
 
-        private static MySqlConnection GetConnection()
+        public static MySqlConnection GetConnection()
         {
             return new MySqlConnection(connectionString);
         }
