@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using qlythuquanAdmin.database;
+using qlythuquanAdmin.DAL;
 using qlythuquanAdmin.Model;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace qlythuquanAdmin.Services
+namespace qlythuquanAdmin.BUS
 {
     internal class LoginService
     {

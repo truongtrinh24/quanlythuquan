@@ -1,5 +1,5 @@
-﻿using qlythuquanAdmin.database;
-using qlythuquanAdmin.Services;
+﻿using qlythuquanAdmin.DAL;
+using qlythuquanAdmin.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -217,11 +217,18 @@ namespace qlythuquanAdmin.UI
 
             dgvThanhVien.DataSource = null;
             dgvThanhVien.DataSource = result;
+
+            // Chỉ giữ lại 4 cột hiển thị
             dgvThanhVien.Columns["FullName"].HeaderText = "Họ tên";
             dgvThanhVien.Columns["Address"].HeaderText = "Địa chỉ";
             dgvThanhVien.Columns["Birthday"].HeaderText = "Ngày sinh";
             dgvThanhVien.Columns["Phone"].HeaderText = "Số điện thoại";
 
+            // Ẩn các cột không cần thiết
+            if (dgvThanhVien.Columns.Contains("Email")) dgvThanhVien.Columns["Email"].Visible = false;
+            if (dgvThanhVien.Columns.Contains("PasswordHash")) dgvThanhVien.Columns["PasswordHash"].Visible = false;
+            if (dgvThanhVien.Columns.Contains("RoleId")) dgvThanhVien.Columns["RoleId"].Visible = false;
+            if (dgvThanhVien.Columns.Contains("CreatedAt")) dgvThanhVien.Columns["CreatedAt"].Visible = false;
         }
 
 

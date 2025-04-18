@@ -1,5 +1,5 @@
 ﻿using qlythuquanAdmin.UI;
-using qlythuquanAdmin.database;
+using qlythuquanAdmin.DAL;
 namespace qlythuquanAdmin
 {
     public partial class Form1 : Form
@@ -92,7 +92,7 @@ namespace qlythuquanAdmin
 
         private void Form1_Load()
         {
-            if (database.DatabaseHelper.TestConnection())
+            if (DatabaseHelper.TestConnection())
             {
                 MessageBox.Show("✅ Kết nối cơ sở dữ liệu thành công!");
             }

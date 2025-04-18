@@ -1,14 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
-using qlythuquanAdmin.database;
 using qlythuquanAdmin.Model;
 using System.Collections.Generic;
 using System.Data;
-using qlythuquanAdmin.database;
+using qlythuquanAdmin.DAL;
+using System.Windows.Forms;
 
-namespace qlythuquanAdmin.Services
+namespace qlythuquanAdmin.BUS
 {
     public class UserService
     {
+        private UserDAL dal = new UserDAL();
         public static List<User> SearchUsers(string keyword)
         {
             List<User> list = new List<User>();
@@ -35,7 +36,8 @@ namespace qlythuquanAdmin.Services
                         {
                             FullName = reader.GetString("full_name"),
                             Address = reader.IsDBNull("address") ? "" : reader.GetString("address"),
-                            Birthday = reader.IsDBNull("birthday") ? "" : reader.GetDateTime("birthday").ToString("dd/MM/yyyy"),
+                            Birthday = reader.IsDBNull("birthday") ? DateTime.MinValue : reader.GetDateTime("birthday"),
+
                             Phone = reader.IsDBNull("phone") ? "" : reader.GetString("phone")
                         });
                     }
@@ -43,6 +45,13 @@ namespace qlythuquanAdmin.Services
             }
 
             return list;
+        }
+        public bool ThemNguoiDung(User user)
+        {
+            if (string.IsNullOrWhiteSpace(user.FullName) || string.IsNullOrWhiteSpace(user.Email))
+                return false;
+
+            return dal.ThemNguoiDung(user);
         }
     }
 }

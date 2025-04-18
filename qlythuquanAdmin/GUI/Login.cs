@@ -1,4 +1,4 @@
-﻿using qlythuquanAdmin.Services;
+﻿using qlythuquanAdmin.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

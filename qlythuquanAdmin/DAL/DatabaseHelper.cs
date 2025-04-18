@@ -2,7 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace qlythuquanAdmin.database
+namespace qlythuquanAdmin.DAL
 {
     internal class DatabaseHelper
     {
